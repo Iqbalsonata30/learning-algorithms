@@ -20,10 +20,14 @@
 //   end for
 // end for
 //
-// the inialization = is i = 0, f = 0 and z = 1. 
+// the inialization = is i = 0, f = 0 and z = 1.
 // maintenance = there are 2 whiles, where the first one, i need it for terminated the array, and the another one is the key point,so i'm able to  compare each of these values.
 // termination = exacly where the i exists, because if it exceeds the n, the loop is terminated.
 // either the best case or the worst case is  theta n squared
+
+const std = @import("std");
+const expect = std.testing.expect;
+const mem = std.mem;
 
 
 pub fn selectionSort(nums: []i32) void {
@@ -41,4 +45,31 @@ pub fn selectionSort(nums: []i32) void {
             f += 1;
         }
     }
+}
+
+test "test selection sort with positive numbers" {
+    var numbers = [_]i32{ 5, 4, 1, 2, 1, 34, 12, 2 };
+    var expected = [_]i32{ 1, 1, 2, 2, 4, 5, 12, 34 };
+
+    selectionSort(numbers[0..]);
+    try expect(mem.eql(i32, expected[0..], numbers[0..]));
+}
+
+test "test selection sort with negative numbers" {
+    var numbers = [_]i32{ 10, -5, 3, -2, 1, 5 };
+    var expected = [_]i32{ -5, -2, 1, 3, 5, 10 };
+
+    selectionSort(numbers[0..]);
+
+    try expect(mem.eql(i32, expected[0..], numbers[0..]));
+}
+
+test "test selection sort with incorrect result" {
+    var numbers = [_]i32{ 5, 4, 1, 2, 1, 34, 12, 2 };
+    var expected = [_]i32{ 1, 1, 34, 2, 4, 2,12, 34 };
+
+    selectionSort(numbers[0..]);
+
+    try expect(!mem.eql(i32, expected[0..],numbers[0..]));
+    
 }
