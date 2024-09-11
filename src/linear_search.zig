@@ -9,6 +9,10 @@
 // initialization = i = first index true until end of array
 // maintenance = if a[i] == x return i if not still inc the i
 // termination == if the array of the index i is equal to the target or i exceeds length of the array
+//
+//
+// input = [1,2,3,4,5,6];
+// target = 4;
 
 const std = @import("std");
 const expect = std.testing.expect;
@@ -39,3 +43,5 @@ test "test linear search with null result" {
     const res: ?i32 = linearSearch(numbers[0..], target);
     try expect(res == expected);
 }
+
+
