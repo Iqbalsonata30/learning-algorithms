@@ -1,5 +1,5 @@
 const std = @import("std");
-pub fn addBinaryIntegers(a: []u8, b: []u8) ![]const u8 {
+pub fn addBinaryIntegers(a: []u8, b: []u8,c: [100]u8) void {
     var valA: u8 = 0;
     var valB: u8 = 0;
     var valC: u8 = 0;
@@ -21,9 +21,10 @@ pub fn addBinaryIntegers(a: []u8, b: []u8) ![]const u8 {
         const res: u8 = valC % 2;
         list.append(res) catch unreachable;
     }
-    const c = list.toOwnedSlice();
     return c;
 }
+
+
 
 // i have two inputs, which are a and b array of integers either 1 or 0
 // the output should be an array of c which is the sum of these fcking two arrays and the value has to be stored in binary form
@@ -48,14 +49,3 @@ pub fn addBinaryIntegers(a: []u8, b: []u8) ![]const u8 {
 //
 //
 // }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
