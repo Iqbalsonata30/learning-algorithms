@@ -84,3 +84,12 @@ test "test merge sort with incorrect result" {
 
     try expect(!mem.eql(i32, numbers[0..], expected[0..]));
 }
+
+test "test merge sort with another postiive numbers" {
+    var numbers = [_]i32{ 12, 3, 7, 9, 14, 6, 11, 2, 1 };
+    const expected = [_]i32{ 1, 2, 3, 6, 7, 9, 11, 12, 14 };
+    const length: usize = numbers.len - 1;
+    try mergeSort(numbers[0..], 0, length);
+
+    try expect(mem.eql(i32, numbers[0..], expected[0..]));
+}
