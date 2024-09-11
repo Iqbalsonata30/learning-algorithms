@@ -17,7 +17,7 @@ const std = @import("std");
 const mem = std.mem;
 const expect = std.testing.expect;
 
-pub fn insertionSort(numbers: []i32, n: usize) void {
+fn insertionSort(numbers: []i32, n: usize) void {
     var i: usize = 1;
     while (i < n) : (i += 1) {
         const key: i32 = numbers[i];
@@ -29,7 +29,7 @@ pub fn insertionSort(numbers: []i32, n: usize) void {
     }
 }
 
-pub fn insertionSortDec(numbers: []i32, n: usize) void {
+fn insertionSortDec(numbers: []i32, n: usize) void {
     var i: usize = 1;
     while (i < n) : (i += 1) {
         const key: i32 = numbers[i];
@@ -39,6 +39,22 @@ pub fn insertionSortDec(numbers: []i32, n: usize) void {
         }
         numbers[@intCast(f + 1)] = key;
     }
+}
+
+fn insertionSortRec(numbers: []i32, n: usize) void {
+    if (n <= 1) {
+        return;
+    }
+
+    insertionSortRec(numbers[0..], n - 1);
+
+    const l: i32 = numbers[n - 1];
+    var f: i32 = @intCast(n - 2);
+
+    while (f >= 0 and numbers[@intCast(f)] > l) : (f -= 1) {
+        numbers[@intCast(f + 1)] = numbers[@intCast(f)];
+    }
+    numbers[@intCast(f + 1)] = l;
 }
 
 test "test insertion sort with positive numbers" {
@@ -87,4 +103,19 @@ test "test insertion sort reversed order with incorrect result" {
 
     insertionSortDec(numbers[0..], numbers.len);
     try expect(!mem.eql(i32, numbers[0..], expected[0..]));
+}
+
+test "test insertion sort recursive with positive numbers" {
+    var numbers = [_]i32{ 5, 4, 3, 2, 15, 2, 1 };
+    var expected = [_]i32{ 1, 2, 2, 3, 4, 5, 15 };
+
+    insertionSortRec(numbers[0..], numbers.len);
+    try expect(mem.eql(i32, numbers[0..], expected[0..]));
+}
+test "test insertion sort recursive with negative numbers" {
+    var numbers = [_]i32{ 6, 12, -34, 2, 1, 30, 5, -3 };
+    var expected = [_]i32{ -34, -3, 1, 2, 5, 6, 12, 30 };
+
+    insertionSortRec(numbers[0..], numbers.len);
+    try expect(mem.eql(i32, numbers[0..], expected[0..]));
 }

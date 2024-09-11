@@ -1,10 +1,11 @@
 // input : [2,4,6,7,1,2,3,5]
 // output : [1,2,2,3,4,5,6,7]
-// Running time is theta log n;
+// Running time is theta n log n;
 
 const std = @import("std");
 const mem = std.mem;
 const expect = std.testing.expect;
+
 fn mergeSort(A: []i32, left: usize, right: usize) !void {
     if (left >= right) {
         return;
