@@ -3,7 +3,6 @@
 // key = numbers[i];
 // f = i -1
 // while(f >= 0 ) and numbers[f] < key{
-// {2,1,1,4,5}
 //   numbers[f+1] = numbers[f]
 //   f -= 1
 // }

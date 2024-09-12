@@ -46,8 +46,8 @@ test "test binary search with correct result" {
 }
 
 test "test binary search  target not found." {
-    var numbers = [_]i32{ 1, 2, 3, 4, 5, 6 };
-    const target: i32 = 11;
+    var numbers = [_]i32{ 1,2,3,4,5,6 };
+    const target: i32 = 7;
     const expected: i32 = -1;
     const res: i32 = binarySearch(numbers[0..], target);
     try expect(res == expected);

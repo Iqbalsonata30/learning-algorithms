@@ -2,6 +2,8 @@
 // output : [1,2,2,3,4,5,6,7]
 // Running time is theta n log n;
 
+// input [3,41,52,26,38,57,9,49]
+
 const std = @import("std");
 const mem = std.mem;
 const expect = std.testing.expect;
