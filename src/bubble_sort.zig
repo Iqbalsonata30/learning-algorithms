@@ -33,6 +33,6 @@ test "test bubble sort " {
     var numbers = [_]i32{ 5, 4, 3, 2, 1 };
     const length: usize = numbers.len;
 
-    bubbleSort(numbers[0..], length);
+    bubbleSort(&numbers, length);
     std.debug.print("{any}\n", .{numbers});
 }

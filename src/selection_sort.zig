@@ -3,9 +3,8 @@
 //
 // in selection sort i need to find the smallest number in array and compare a[1] through end
 //
-// input : [5,4,3,2,1]
-// input : [1,2,3,4,5]
-// output : [1,1,2,4,5]
+// input  : [5,4,3,2,1]
+// output : [1,2,3,4,5]
 // running time : is clearly n squared.
 //
 // for i = 0 through n
