@@ -23,7 +23,7 @@ const expect = std.testing.expect;
 
 fn binarySearch(numbers: []i32, target: i32) i32 {
     var first: u32 = 0;
-    var last: u32 = @intCast(numbers.len - 1);
+    var last: u32 = @intCast(numbers.len);
     while (first < last) {
         const mid: u32 = first + (last - first) / 2;
         if (target > numbers[mid]) {
@@ -39,14 +39,14 @@ fn binarySearch(numbers: []i32, target: i32) i32 {
 
 test "test binary search with correct result" {
     var numbers = [_]i32{ 1, 2, 3, 4, 5, 6 };
-    const target: i32 = 4;
-    const expected: i32 = 3;
+    const target: i32 = 6;
+    const expected: i32 = 5;
     const res: i32 = binarySearch(numbers[0..], target);
     try expect(res == expected);
 }
 
 test "test binary search  target not found." {
-    var numbers = [_]i32{ 1,2,3,4,5,6 };
+    var numbers = [_]i32{ 1, 2, 3, 4, 5, 6 };
     const target: i32 = 7;
     const expected: i32 = -1;
     const res: i32 = binarySearch(numbers[0..], target);
